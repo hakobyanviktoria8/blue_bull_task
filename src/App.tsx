@@ -4,7 +4,13 @@ import './App.scss';
 import { useNavigate } from "react-router-dom";
 
 function App() {
-  const [formData, setFormData] = useState({email: '', password: ''})
+  const [formData, setFormData] = useState<{
+    email: string; 
+    password: string; 
+  }>({
+    email: 'johndoe@gmail.com',
+    password: 'Yrngfp9#kX@U=J9L',
+  });
   const navigate = useNavigate();
 
   const handleChange = (e: any) => {
@@ -41,6 +47,7 @@ function App() {
                 onChange={handleChange} 
                 placeholder="Email" 
                 autoComplete="off"
+                value={formData.email}              
               />
             </label>
             <label>
@@ -51,6 +58,7 @@ function App() {
                 onChange={handleChange} 
                 placeholder="Password" 
                 autoComplete="off"
+                value={formData.password}
               />
             </label>
             <input 
