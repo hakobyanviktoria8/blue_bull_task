@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { logInApi } from './api';
 import './App.scss';
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [formData, setFormData] = useState({email: '', password: ''})
+  const navigate = useNavigate();
 
   const handleChange = (e: any) => {
     const { name, value } = e.target
@@ -12,10 +15,18 @@ function App() {
     })
   }
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log("formData",formData);    
-  }
+    console.log("Form Data is a",formData); 
+    navigate(`/users`);
+  //   try {
+  //     const res = await logInApi(formData)
+  //     const result = await res.json()
+  //     console.log("Result is ",result)
+  //   } catch (error) {
+  //     console.log("Error message is", error);      
+  //  }
+  }   
 
   return (
     <div className="app">
