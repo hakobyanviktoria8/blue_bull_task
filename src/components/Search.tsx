@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { User } from '../pages/user/User';
+import { User } from './user/User';
 
 export const Search = () => {
     const [searchValue, setSearchValue] = useState("")

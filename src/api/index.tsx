@@ -35,3 +35,15 @@ export function usersListApi(token: string | any) {
       method: 'GET',
    })
 }
+
+// user detail
+export function userDetail(token: string | any, userId: string) {
+   return fetch(`${ API_URL }/v1/users/view/${userId}`, {
+      headers: { 
+         'Accept': 'application/json',
+         'Content-Type': 'application/json',
+         'Authorization': `Bearer ${token}`
+      },
+      method: 'GET',
+   })
+}
