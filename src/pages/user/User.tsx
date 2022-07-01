@@ -1,3 +1,5 @@
+import "./user.scss";
+
 export const User = ({user}: any) => {
   return (
     <div key={user._id} className="userCart">

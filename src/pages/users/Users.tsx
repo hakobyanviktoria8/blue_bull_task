@@ -2,7 +2,7 @@ import { Header } from '../../components/Header';
 import './users.scss';
 import { useSelector } from 'react-redux';
 import { Search } from '../../components/Search';
-import { User } from '../../components/User';
+import { User } from '../user/User';
 
 const Users = () => {
   const usersData = useSelector((state: any) => state)
