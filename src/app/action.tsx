@@ -4,4 +4,10 @@ export function setUsersData(usersData: any[]) {
         payload: usersData
     }
 }
+export function searchUserData(userData: any[]) {
+    return {
+        type: "SEARCH_USER_DATA",
+        payload: userData
+    }
+}
 

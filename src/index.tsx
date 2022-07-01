@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Users from './pages/users/Users';
-import { User } from './pages/user/User';
+import { User } from './components/User';
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 

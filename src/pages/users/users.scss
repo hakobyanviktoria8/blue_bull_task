@@ -27,6 +27,29 @@
         }
     }
     .mainContent {
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+
+            input {
+                height: 36px;
+                width: 300px;
+                border: 2px solid #2727e5;
+                border-radius: 18px 0 0 18px;
+                padding-left: 20px;
+                outline: none;
+            }
+
+            .searchBtn {
+                margin-left: -20px;
+                background: #2727e5;
+                color: white;
+                width: 150px;
+                border-radius: 18px;
+            }
+        }
+
         h2 {
             font-size: 30px;
             text-align: center;
@@ -40,7 +63,7 @@
 
             .userCart {
                 box-shadow: 0 0 10px #e2e2e2;
-                width: 280px;
+                width: 300px;
                 padding: 40px 20px;
                 margin: 20px;
                 text-align: center;
@@ -64,5 +87,9 @@
                 }
             }
         }
+    }
+    .messageText {
+        text-align: center;
+        margin-bottom: 24px;
     }
 }

@@ -1,6 +1,8 @@
 import { Header } from '../../components/Header';
 import './users.scss';
 import { useSelector } from 'react-redux';
+import { Search } from '../../components/Search';
+import { User } from '../../components/User';
 
 const Users = () => {
   const usersData = useSelector((state: any) => state)
@@ -10,17 +12,12 @@ const Users = () => {
     <div className="users">
       <Header />
       <div className="mainContent">
+        <Search />
         <h2>Users list</h2>
         <div className="usersCartWrapper">
           {
             usersData?.map((user: any)=>
-              <div key={user._id} className="userCart">
-                <h3>{user.name}</h3>
-                <p><b>Email:</b> {user.email}</p>
-                <p><b>Phone:</b> {user.phone}</p>
-                <p><b>Bonus:</b> {user.active_bonus}</p>
-                <p><b>Balance:</b> {user.balance}</p>              
-              </div>
+              <User user={user} key={user._id}/>
             )
           }
         </div>
