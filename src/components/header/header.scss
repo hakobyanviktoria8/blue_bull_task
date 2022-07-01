@@ -1,0 +1,27 @@
+.header {
+    height: 50px;
+    box-shadow: 0 0 5px #cdcbcb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    margin-bottom: 30px;
+
+    a {
+        font-size: 20px;
+        text-decoration: none;
+        font-weight: 600;
+        color: #2727e5;
+    }
+
+    button {
+        height: 36px;
+        width: 150px;
+        color: #2727e5;
+        outline: none;
+        font-weight: 600;
+        border: 1px solid #2727e5;
+        background: white;
+        border-radius: 4px;
+    }
+}

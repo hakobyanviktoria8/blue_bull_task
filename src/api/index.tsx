@@ -37,7 +37,7 @@ export function usersListApi(token: string | any) {
 }
 
 // user detail
-export function userDetail(token: string | any, userId: string) {
+export function userIdApi(token: string | any, userId: string) {
    return fetch(`${ API_URL }/v1/users/view/${userId}`, {
       headers: { 
          'Accept': 'application/json',

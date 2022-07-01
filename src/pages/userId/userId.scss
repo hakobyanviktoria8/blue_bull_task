@@ -1,0 +1,22 @@
+.userId {
+    box-shadow: 0 0 10px #cdcbcb;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    margin: 0 auto;
+    padding: 24px;
+    background: white;
+    text-align: center;
+
+    h3 {
+        font-size: 26px;
+        color: #2727e5;
+        margin-bottom: 20px;
+    }
+
+    p { 
+        display: flex;
+        justify-content: space-between;
+    }
+}

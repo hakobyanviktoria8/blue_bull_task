@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
-import { logOutApi } from './../api';
+import { logOutApi } from '../../api';
 import { useNavigate } from 'react-router-dom';
+import './header.scss';
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export const Header = () => {
 
   return (
     <div className="header">
-      <Link to = "/">Go Back</Link>
+      <Link to = "/">Home</Link>
       <button onClick = { handleLogOut }>Logout</button>
     </div>
   )

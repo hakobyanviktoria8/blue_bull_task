@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router";
 // import { Link } from "react-router-dom";
-import { userDetail } from "../../api";
 import "./user.scss";
+import { useNavigate } from "react-router";
+import { userIdApi } from "../../api";
 
 export const User = ({user}: any) => {
   const navigate = useNavigate();
@@ -9,13 +9,12 @@ export const User = ({user}: any) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-
     try {
       if(token){
-        const res = await userDetail(token, user._id)
+        const res = await userIdApi(token, user._id)
         const result = await res.json()
         console.log("Result user is ", result)
-        navigate(`/users/${user._id}`);
+        navigate(`/users/${result._id}`);
       }
     } catch (error) {
       console.log("Error message is", error);      
@@ -29,7 +28,9 @@ export const User = ({user}: any) => {
       <p><b>Phone:</b> {user.phone}</p>
       <p><b>Bonus:</b> {user.active_bonus}</p>
       <p><b>Balance:</b> {user.balance}</p> 
-      <button onClick={handleSubmit}>See User Details</button>             
+      <button onClick={handleSubmit}>See User Details</button>
+      {/* another way */}
+      {/* <Link to={`/users/${user._id}`}>See User Details</Link> */}
     </div>
   )
 }

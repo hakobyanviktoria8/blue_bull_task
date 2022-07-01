@@ -1,90 +1,62 @@
-.users {
-    .header {
-        height: 50px;
-        box-shadow: 0 0 5px #cdcbcb;
+.mainContent {
+    form {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 40px;
+        justify-content: center;
+        flex-direction: column;
         margin-bottom: 30px;
+        align-items: center;
 
-        a {
-            font-size: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            color: #2727e5;
-        }
-
-        button {
-            height: 36px;
-            width: 150px;
-            color: #2727e5;
-            outline: none;
-            font-weight: 600;
-            border: 1px solid #2727e5;
-            background: white;
-            border-radius: 4px;
-        }
-    }
-    .mainContent {
-        form {
+        .useFilter{
             display: flex;
-            justify-content: center;
-            flex-direction: column;
-            margin-bottom: 30px;
-            align-items: center;
+            width: 220px;
+            margin-bottom: 20px;
+            justify-content: space-between;
 
-            .useFilter{
+            label {
                 display: flex;
-                width: 220px;
-                margin-bottom: 20px;
-                justify-content: space-between;
 
-                label {
-                    display: flex;
-
-                    input {
-                        height: 20px;
-                        width: 20px;
-                        margin-left: 10px;
-                    }
+                input {
+                    height: 20px;
+                    width: 20px;
+                    margin-left: 10px;
                 }
             }
-
-            input {
-                height: 36px;
-                width: 300px;
-                border: 2px solid #2727e5;
-                border-radius: 18px 0 0 18px;
-                padding-left: 20px;
-                outline: none;
-            }
-
-            .searchBtn {
-                margin-left: -20px;
-                background: #2727e5;
-                color: white;
-                width: 150px;
-                border-radius: 18px;
-            }
         }
 
-        h2 {
-            font-size: 30px;
-            text-align: center;
-            color: #2727e5;
-            border-top: 1px solid #e2e2e2;
+        input {
+            height: 36px;
             width: 300px;
-            margin: 30px auto;
-            padding-top: 20px;
+            border: 2px solid #2727e5;
+            border-radius: 18px 0 0 18px;
+            padding-left: 20px;
+            outline: none;
         }
 
-        .usersCartWrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .searchBtn {
+            margin-left: -20px;
+            background: #2727e5;
+            color: white;
+            width: 150px;
+            border-radius: 18px;
         }
     }
+
+    h2 {
+        font-size: 30px;
+        text-align: center;
+        color: #2727e5;
+        border-top: 1px solid #e2e2e2;
+        width: 300px;
+        margin: 30px auto;
+        padding-top: 20px;
+    }
+
+    .usersCartWrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     .messageText {
         text-align: center;
         margin-bottom: 24px;
