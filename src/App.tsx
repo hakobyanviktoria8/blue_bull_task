@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { logInApi } from './api';
+import { logInApi, usersListApi } from './api';
 import './App.scss';
 import { useNavigate } from 'react-router-dom';
+import { setUsersData } from './app/action';
+import { useDispatch } from "react-redux"
 
 function App() {
   const [formData, setFormData] = useState<{
@@ -12,6 +14,7 @@ function App() {
     password: '94a65df62ba94c16e3a5fb6b',
   });
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const handleChange = (e: any) => {
     const { name, value } = e.target
@@ -27,10 +30,17 @@ function App() {
     try {
       const res = await logInApi(formData)
       const result = await res.json()
-      if(result.token){
-        localStorage.setItem('token', result.token);
+      const token = result.token
+      console.log("Result token is ", token)
+
+      if(token){
+        localStorage.setItem('token', token);        
+        const usersRes = await usersListApi(token)
+        const usersResult = await usersRes.json()
+        console.log("Users data is ", usersResult); 
+
+        dispatch(setUsersData(usersResult));
         navigate(`/users`);
-        console.log("Result is ", result.token)
       }
     } catch (error) {
       console.log("Error message is", error);      
