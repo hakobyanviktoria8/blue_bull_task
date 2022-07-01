@@ -1,4 +1,4 @@
-const API_URL = process.env.API_URL
+const API_URL = 'https://magic-dashboard-api.herokuapp.com/api'
 
 // login
 export function logInApi(data: any) {
@@ -13,12 +13,12 @@ export function logInApi(data: any) {
  }
 
 //  logout
-export function logOutApi(TOKEN: any) {
+export function logOutApi(token: any) {
    return fetch(`${ API_URL }/v1/logout`, {
       headers: { 
          'Accept': 'application/json',
          'Content-Type': 'application/json',
-         'Authorization': `Bearer {${TOKEN}}`
+         'Authorization': `Bearer {${token}}`
        },
       method: 'POST',
    })

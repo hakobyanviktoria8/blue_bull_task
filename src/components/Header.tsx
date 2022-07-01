@@ -1,13 +1,28 @@
 import { Link } from "react-router-dom"
 import { logOutApi } from './../api';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
-  // generate token and give logOutApi
-  
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    const token = localStorage.getItem('token');
+
+    try {
+      const res = await logOutApi(token)
+      const result = await res.json()
+      console.log("Result is ", result)
+    } catch (error) {
+      localStorage.removeItem('token');
+      navigate(`/`);
+      console.log("Error message is", error); 
+    }
+  }  
+
   return (
     <div className="header">
       <Link to = "/">Go Back</Link>
-      <button onClick = { logOutApi }>Logout</button>
+      <button onClick = { handleLogOut }>Logout</button>
     </div>
   )
 }
