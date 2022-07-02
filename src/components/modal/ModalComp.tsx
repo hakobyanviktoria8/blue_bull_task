@@ -1,8 +1,10 @@
-import { IconButton, Modal, Typography, Box, Button, TextField } from '@mui/material';
+import { IconButton, Modal, Typography, Box, Button, Input } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import './modalComp.scss';
 import { useState } from 'react';
 import { updateUserDataApi } from "../../api";
+import { setUsersData } from './../../app/action';
+import { useDispatch } from "react-redux";
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -18,7 +20,7 @@ const style = {
 
 export default function ModalComp({open, setOpen, user}: any) {
   const handleClose = () => setOpen(false);
-
+  const dispatch = useDispatch()
   const[formData, setFormData] = useState<{
     name: string; 
     language_id: number; 
@@ -53,9 +55,11 @@ export default function ModalComp({open, setOpen, user}: any) {
         const res = await updateUserDataApi(token, user._id, formData)
         const result = await res.json()
         // console.log("Update user data is ", result)
+        handleClose()
+        dispatch(setUsersData([result]));
       }
     } catch (error) {
-      console.log("Error message is", error);      
+      console.log("Error message is 1111", error);      
     }
   } 
 
@@ -72,16 +76,14 @@ export default function ModalComp({open, setOpen, user}: any) {
           <CloseIcon />
         </IconButton>
         <Typography id="modal-modal-title" variant="h6" component="h2">Update user data</Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          <TextField onChange={handleChange} type='text' placeholder="Name" name="name" />
-          <TextField onChange={handleChange} type='number' placeholder="Language id" name="language_id" />
-          <TextField onChange={handleChange} type='number' placeholder="Min bet" name="min_bet" />
-          <TextField onChange={handleChange} type='number' placeholder="Max bet" name="max_bet" />
-          <TextField onChange={handleChange} type='text' placeholder="User level" name="user_level" />
-          <TextField onChange={handleChange} type='password' placeholder="Password" name="password" />
-          <TextField onChange={handleChange} type='password' placeholder="Password confirmation" name="password_confirmation" />
-          <Button className='updateBtn' onClick={handleClick}>Update Data</Button>
-        </Typography>
+        <Input  onChange={handleChange} type='text' placeholder="Name" name="name" />
+        <Input  onChange={handleChange} type='number' placeholder="Language id" name="language_id" />
+        <Input  onChange={handleChange} type='number' placeholder="Min bet" name="min_bet" />
+        <Input  onChange={handleChange} type='number' placeholder="Max bet" name="max_bet" />
+        <Input  onChange={handleChange} type='text' placeholder="User level" name="user_level" />
+        <Input  onChange={handleChange} type='password' placeholder="Password" name="password" />
+        <Input  onChange={handleChange} type='password' placeholder="Password confirmation" name="password_confirmation" />
+        <Button className='updateBtn' onClick={handleClick}>Update Data</Button>
       </Box>
     </Modal>
   );
