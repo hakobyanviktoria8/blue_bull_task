@@ -19,4 +19,15 @@
         display: flex;
         justify-content: space-between;
     }
+
+    button {
+        margin: 30px auto;
+        width: 200px;
+        padding: 6px;
+        background: #2727e5;
+        border: none;
+        outline: none;
+        border-radius: 15px;
+        color: white;
+    }
 }

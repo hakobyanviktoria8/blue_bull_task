@@ -1,0 +1,28 @@
+.modalComp {
+    div {
+        button {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+        }
+
+        p > div {
+            outline: none;
+            width: 100%;
+            margin-bottom: 10px;
+            height: 50px;
+            overflow: hidden;
+
+            div > input {
+                height: 15px;
+            } 
+        }
+    }
+
+    .updateBtn {
+        position: initial;
+        margin: 20px auto;
+        border: 1px solid;
+        display: block;
+    }
+}

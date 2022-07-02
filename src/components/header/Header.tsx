@@ -12,7 +12,7 @@ export const Header = () => {
     try {
       const res = await logOutApi(token)
       const result = await res.json()
-      console.log("Result is ", result)
+      // console.log("Result is ", result)
     } catch (error) {
       localStorage.removeItem('token');
       navigate(`/`);

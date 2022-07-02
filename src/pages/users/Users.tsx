@@ -6,7 +6,7 @@ import { Layout } from '../../components/Layout';
 
 const Users = () => {
   const usersData = useSelector((state: any) => state)
-  console.log("Store Users data", usersData);
+  // console.log("Store Users data", usersData);
 
   return (
     <Layout>

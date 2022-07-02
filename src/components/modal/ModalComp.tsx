@@ -1,53 +1,88 @@
+import { IconButton, Modal, Typography, Box, Button, TextField } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import './modalComp.scss';
 import { useState } from 'react';
-import Modal from 'react-modal';
+import { updateUserDataApi } from "../../api";
 
-const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
-  
-  export const ModalComp = () => {
-    const [modalIsOpen, setIsOpen] = useState(false);
-    let subtitle: any;
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
-    function openModal() {
-        setIsOpen(true);
-    }
+export default function ModalComp({open, setOpen, user}: any) {
+  const handleClose = () => setOpen(false);
 
-    function closeModal() {
-        setIsOpen(false);
-    }
+  const[formData, setFormData] = useState<{
+    name: string; 
+    language_id: number; 
+    min_bet: number; 
+    max_bet: number; 
+    user_level: string;
+    password: string;
+    password_confirmation: string;
+  }>({
+    name: user.name,
+    language_id: user.language_id,
+    min_bet: user.min_bet,
+    max_bet: user.max_bet,
+    user_level: user.user_level,
+    password: user.password,
+    password_confirmation: user.password_confirmation,
+  }); 
 
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        subtitle.style.color = '#f00';
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+   })
+  }
+  const handleClick = async (e: any) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    // console.log("form Data is a ",formData)
+    try {
+      if(token){
+        const res = await updateUserDataApi(token, user._id, formData)
+        const result = await res.json()
+        // console.log("Update user data is ", result)
       }
+    } catch (error) {
+      console.log("Error message is", error);      
+    }
+  } 
+
   return (
-    <div>
-        <Modal
-            isOpen={modalIsOpen}
-            onAfterOpen={afterOpenModal}
-            onRequestClose={closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
-        >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
-      </Modal>
-    </div>
-  )
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+      className='modalComp'
+    >
+      <Box sx={style}>
+        <IconButton onClick={ handleClose }>
+          <CloseIcon />
+        </IconButton>
+        <Typography id="modal-modal-title" variant="h6" component="h2">Update user data</Typography>
+        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <TextField onChange={handleChange} type='text' placeholder="Name" name="name" />
+          <TextField onChange={handleChange} type='number' placeholder="Language id" name="language_id" />
+          <TextField onChange={handleChange} type='number' placeholder="Min bet" name="min_bet" />
+          <TextField onChange={handleChange} type='number' placeholder="Max bet" name="max_bet" />
+          <TextField onChange={handleChange} type='text' placeholder="User level" name="user_level" />
+          <TextField onChange={handleChange} type='password' placeholder="Password" name="password" />
+          <TextField onChange={handleChange} type='password' placeholder="Password confirmation" name="password_confirmation" />
+          <Button className='updateBtn' onClick={handleClick}>Update Data</Button>
+        </Typography>
+      </Box>
+    </Modal>
+  );
 }

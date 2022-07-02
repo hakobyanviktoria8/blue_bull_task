@@ -26,18 +26,18 @@ function App() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log("Form Data is a",formData); 
+    // console.log("Form Data is a",formData); 
     try {
       const res = await logInApi(formData)
       const result = await res.json()
       const token = result.token
-      console.log("Result token is ", token)
+      // console.log("Result token is ", token)
 
       if(token){
         localStorage.setItem('token', token);        
         const usersRes = await usersListApi(token)
         const usersResult = await usersRes.json()
-        console.log("Users data is ", usersResult); 
+        // console.log("Users data is ", usersResult); 
 
         dispatch(setUsersData(usersResult));
         navigate(`/users`);

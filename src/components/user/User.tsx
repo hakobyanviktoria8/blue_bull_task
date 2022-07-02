@@ -13,7 +13,7 @@ export const User = ({user}: any) => {
       if(token){
         const res = await userIdApi(token, user._id)
         const result = await res.json()
-        console.log("Result user is ", result)
+        // console.log("Result user is ", result)
         navigate(`/users/${result._id}`);
       }
     } catch (error) {
